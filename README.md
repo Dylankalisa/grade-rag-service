@@ -1,19 +1,43 @@
- Grade RAG Service
+grade-rag-service is a production-oriented evaluation layer for Retrieval-Augmented Generation (RAG) systems.
+It focuses on measuring, validating, and enforcing quality guarantees on LLM outputs rather than blindly trusting generated responses.
 
-A backend service for  evaluating Retrieval-Augmented Generation (RAG) systems   by scoring retrieval quality, response correctness, and robustness under adversarial or edge-case inputs.
+This service treats LLM output as untrusted input and applies deterministic grading, schema validation, and reproducible evaluation logic before results are accepted downstream.
 
-The goal of this project is to make RAG systems   measurable, reproducible, and debuggable  , rather than treating them as black boxes.
+Key Capabilities
 
----
+Deterministic grading of RAG outputs against expected criteria
 
- What this service does
+Structured validation of LLM responses (schema + constraints)
 
-Grade RAG Service orchestrates RAG evaluations by:
-- Running controlled retrieval + generation workflows
-- Scoring results using deterministic and heuristic metrics
-- Capturing full metadata for repeatable analysis
+Prompt versioning and evaluation comparison
 
-It is designed to answer practical questions like:
-- Did retrieval actually help the response?
-- How stable are results across retries?
-- Where does the pipeline degrade under adversarial inputs
+Failure classification (hallucination, partial retrieval, format violations)
+
+Metrics for accuracy, consistency, and latency
+
+Why This Exists
+
+Most RAG systems optimize for retrieval and generation speed.
+This system exists to answer a harder question:
+
+“Is the AI output actually usable, correct, and safe to ship?”
+
+Use Cases
+
+Evaluating prompt changes before production rollout
+
+Comparing model variants or retrieval strategies
+
+Guardrailing AI-generated content in critical systems
+
+Enforcing quality SLAs on AI responses
+
+Tech Stack
+
+Python
+
+LLM APIs
+
+Schema validation
+
+Deterministic evaluation logic
